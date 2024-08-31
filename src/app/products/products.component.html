@@ -1,0 +1,71 @@
+<div>
+    <h2>Products</h2>
+    
+    <div class="category-filter">
+      <label for="category">Filter by category:</label>
+      <select id="category" (change)="onCategoryChange($event)">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  
+    <div class="product-list">
+      <div *ngFor="let product of products" class="product-card">
+        <img [src]="product.image" alt="{{ product.title }}">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="price">Price: {{ product.price | currency }}</p>
+      </div>
+    </div>
+  
+    <div>
+      <h3>Add New Product</h3>
+      <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+        <label for="title">Title:</label>
+        <input id="title" formControlName="title" type="text">
+  
+        <label for="description">Description:</label>
+        <input id="description" formControlName="description" type="text">
+  
+        <label for="price">Price:</label>
+        <input id="price" formControlName="price" type="number">
+  
+        <label for="category">Category:</label>
+        <select id="category" formControlName="category">
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+  
+        <label for="image">Image URL:</label>
+        <input id="image" formControlName="image" type="text">
+  
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+  
+    <div>
+      <h3>Update Product</h3>
+      <form [formGroup]="updateProductForm" (ngSubmit)="updateProduct()">
+        <label for="id">Product ID:</label>
+        <input id="id" formControlName="id" type="number">
+  
+        <label for="title">Title:</label>
+        <input id="title" formControlName="title" type="text">
+  
+        <label for="description">Description:</label>
+        <input id="description" formControlName="description" type="text">
+  
+        <label for="price">Price:</label>
+        <input id="price" formControlName="price" type="number">
+  
+        <label for="category">Category:</label>
+        <select id="category" formControlName="category">
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+  
+        <label for="image">Image URL:</label>
+        <input id="image" formControlName="image" type="text">
+  
+        <button type="submit">Update Product</button>
+      </form>
+    </div>
+  </div>
+  
